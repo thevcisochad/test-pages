@@ -1,49 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Threat Intelligence Sharing</title>
     <style>
         body {
-            background-color: #5B7A91; /* deep sea blue as approximation of "Coral Sea" */
-            color: #F88379; /* coral color for text */
-            font-family: Arial, sans-serif;
+          background-color: #000;
+          color: #32CD32;
+          font-family: 'Courier New', monospace;
+          padding: 20px;
         }
-
         h1 {
-            text-align: center;
-            margin-bottom: 50px;
+          border-bottom: 1px solid #32CD32;
         }
-
-        .blurb {
-            width: 70%;
-            margin: auto;
-            margin-bottom: 50px;
+        ul {
+          list-style-type: none;
+          padding: 0;
         }
-
-        .data-list {
-            width: 70%;
-            margin: auto;
-            list-style-type: none;
-        }
-
-        .data-list li {
-            margin-bottom: 20px;
+        li {
+          margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Threat Intelligence Sharing Site</h1>
-    </header>
-    <section class="blurb">
-        <p>Here at our threat intelligence sharing site, we provide timely and accurate information about potential threats...</p>
-    </section>
-    <section>
-        <ul class="data-list">
-            <li>Threat 1: Description...</li>
-            <li>Threat 2: Description...</li>
-            <li>Threat 3: Description...</li>
-            <!-- Add more list items as needed -->
-        </ul>
-    </section>
+    <h1>Threat Intelligence Sharing Site</h1>
+    <p>This is a platform for sharing information on cyber threats. Here you can find the latest data about potential threats.</p>
+    <h3>Latest Threats:</h3>
+    <ul id="threat-list">
+        <!-- Threats will be populated here by JavaScript -->
+    </ul>
+    <script>
+        fetch('threats.txt')
+        .then(response => response.text())
+        .then(data => {
+            const threats = data.split('\n');
+            const listElement = document.getElementById('threat-list');
+            threats.forEach(threat => {
+                const listItem = document.createElement('li');
+                listItem.textContent = threat;
+                listElement.appendChild(listItem);
+            });
+        });
+    </script>
 </body>
 </html>
